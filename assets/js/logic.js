@@ -12,6 +12,7 @@ var finalScore = document.querySelector("#final-score");
 var enterInitials = document.querySelector("#initials");
 var submitButton = document.querySelector("#submit");
 var feedback = document.querySelector("#feedback");
+
 var timerId;
 var secondsLeft = 30;
 var questionNumber = 0;
@@ -37,6 +38,8 @@ function startTheQuiz() {
 
 function renderQuestion() {
     //to be completed
+var currentQuestion = askQuestion [questionNumber]; 
+questionTitle.textContent= currentQuestion.questions;
 }
 
 startQuizButton.addEventListener("click", startTheQuiz);
