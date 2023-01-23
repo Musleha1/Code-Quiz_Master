@@ -31,8 +31,12 @@ function startTheQuiz() {
     time.innerText = timeRemaining;
 
     startScreen.setAttribute("class" , "hide");
-
+ questions.removeAttribute("class");
+ renderQuestion();
 }
 
+function renderQuestion() {
+    //to be completed
+}
 
 startQuizButton.addEventListener("click", startTheQuiz);
