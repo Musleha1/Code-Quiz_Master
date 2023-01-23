@@ -40,6 +40,19 @@ function renderQuestion() {
     //to be completed
 var currentQuestion = askQuestion [questionNumber]; 
 questionTitle.textContent= currentQuestion.questions;
+choices.innerHTML="";
+
+for(var i=0; i < currentQuestion.choices.length; i++){
+    var choice = currentQuestion.choices[i];
+    var choiceBtn = document.createElement("button");
+    choiceBtn.setAttribute("class", "choice");
+    choiceBtn.setAttribute("value", choice);
+
+    choiceBtn.textContent = choice;
+    choices.appendChild(choiceBtn);
+
+}
+
 }
 
 startQuizButton.addEventListener("click", startTheQuiz);
