@@ -13,12 +13,17 @@ var enterInitials = document.querySelector("#initials");
 var submitButton = document.querySelector("#submit");
 var feedback = document.querySelector("#feedback");
 
-var timerId;
 var questionNumber = 0;
 var questionCount = 1;
+var correctAnswer;
+
+// Create timer
+
+var timerId;
 var timeRemaining = 60;
 var interval;
-var correctAnswer;
+
+
 
 // Click start button to start quiz
 
@@ -37,6 +42,8 @@ function startTheQuiz() {
     renderQuestion();
 }
 
+// Then present user with questions and choices
+
 function renderQuestion() {
 
 var currentQuestion = askQuestion [questionNumber]; //from question.js
@@ -53,7 +60,7 @@ for(var i=0; i < currentQuestion.choices.length; i++){
     choices.appendChild(choiceBtn);
     }
 }
-
+ // After question is answered, alert if answer is correct or incorrect
 
 function choiceHandler(event){
     var btn = event.target;
@@ -63,7 +70,7 @@ function choiceHandler(event){
     }
 
     if(btn.value !== askQuestion[questionNumber].correctAnswer){
-        timeRemaining -= 10;
+        timeRemaining -= 10; // If answer is incorrect, deduct 10s from clock
     if(time < 0) {
         time = 0;
         
@@ -76,17 +83,22 @@ function choiceHandler(event){
         alert ("Correct answer! Press OK to continue")    
     }
 
+// Clear timer if time run out: 
+
     if (timeRemaining <= 0){
         clearInterval(interval);
         timeRemaining.textContent = "Time is up!";
         timeRemaining = 0
         time.innerText = timeRemaining;
     
+// Or clear timer if all questions have been asked:
 
     }   else if(questionNumber >= askQuestion.length +1){
         clearInterval(interval);
 
         }
+
+// End quiz if time is up or all questions are asked:
 
     questionNumber++;
     if (time <= 0 || questionNumber === askQuestion.length) {
@@ -98,24 +110,13 @@ function choiceHandler(event){
       }
       
     }
+    
     startQuizButton.addEventListener("click", startTheQuiz);
     choices.onclick = choiceHandler;
 
 function endQuiz() {
     timeRemaining == 0 || questionNumber === askQuestion.length
 
-}
-   
-    endQuiz();
+endQuiz();
 
-    
-
-
-
-   
-
-
-
-//check if timer run out: 
-//call function endQuiz- stop timer
-//
+}   
